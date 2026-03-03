@@ -1,16 +1,118 @@
-# React + Vite
+🚀 AI Resume Analyzer – Frontend
+# 🚀 AI Resume Analyzer – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the AI Resume Analyzer project.
 
-Currently, two official plugins are available:
+Built using:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚛ React (Vite)
+- 🎨 Tailwind CSS
+- 🔗 Axios
+- 🔐 JWT Authentication
 
-## React Compiler
+It connects to the FastAPI backend to:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Register & Login users
+- Upload resume (PDF)
+- Analyze resume using AI
+- View dashboard insights
+- Dark / Light theme toggle
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📌 Features
+
+- 🔐 User Authentication (Login / Register)
+- 📤 Resume Upload (PDF)
+- 🤖 AI Resume Analysis
+- 📊 Dashboard with:
+  - Total resumes
+  - Average score
+  - Best resume score
+  - Detailed AI insights
+- 🌙 Dark / Light Mode
+- 📱 Fully Responsive UI
+
+---
+
+## 🛠 Tech Stack
+
+| Technology | Usage |
+|------------|--------|
+| React + Vite | Frontend framework |
+| Tailwind CSS | Styling |
+| Axios | API calls |
+| React Router | Routing |
+| JWT | Authentication |
+
+---
+
+# 🖥 How To Run This Project
+
+## 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/rashid-star/ai-resume-frontend.git
+cd ai-resume-frontend
+2️⃣ Install Dependencies
+npm install
+3️⃣ Start Development Server
+npm run dev
+
+App will run at:
+
+http://localhost:5173
+⚙ Backend Requirement
+
+This frontend requires the backend running at:
+
+http://localhost:8000
+
+Backend Repo:
+👉 https://github.com/rashid-star/ai-resume-backend
+
+🔐 Environment Configuration
+
+If deploying, create a .env file:
+
+VITE_API_URL=http://localhost:8000
+
+And use in api.js:
+
+baseURL: import.meta.env.VITE_API_URL
+📁 Project Structure
+src/
+ ├── components/
+ │    ├── Navbar.jsx
+ │    ├── ResumeCard.jsx
+ ├── pages/
+ │    ├── Login.jsx
+ │    ├── Register.jsx
+ │    ├── Dashboard.jsx
+ │    ├── Upload.jsx
+ ├── api/
+ │    └── api.js
+ ├── App.jsx
+ ├── main.jsx
+🎯 Future Improvements
+
+Admin Panel
+
+Resume Download Report (PDF)
+
+Role-based dashboard
+
+Better analytics charts
+
+AI improvement suggestions comparison
+
+👨‍💻 Author
+
+Mohammad Rashid
+
+GitHub: https://github.com/rashid-star
+
+⭐ If you like this project, give it a star!
+git add README.md
+git commit -m "Added README"
+git push
