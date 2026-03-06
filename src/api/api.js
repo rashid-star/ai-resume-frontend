@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://ai-resume-backend-production-f355.up.railway.app"
 });
 
 API.interceptors.request.use((config) => {
