@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Register from "./pages/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -21,6 +22,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login setDark={setDark} dark={dark} />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/dashboard"
           element={<Dashboard setDark={setDark} dark={dark} />}

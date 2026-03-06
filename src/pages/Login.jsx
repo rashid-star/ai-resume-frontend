@@ -45,6 +45,15 @@ function Login() {
         <button style={styles.button} onClick={handleLogin}>
           Login
         </button>
+        <p className="text-sm text-center mt-4 text-gray-500">
+          Don't have an account?
+          <span
+            className="text-blue-600 cursor-pointer ml-1"
+            onClick={() => navigate("/register")}
+          >
+            Register
+          </span>
+        </p>
       </div>
     </div>
   );
