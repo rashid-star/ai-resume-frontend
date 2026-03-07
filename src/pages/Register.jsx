@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api/api";
@@ -17,13 +18,13 @@ function Register() {
         password,
       });
 
-      alert("Registration successful");
+      toast.success("Registration successful");
       navigate("/");
     } catch (error) {
       if (error.response && error.response.data) {
-        alert(error.response.data.detail || "Registration failed");
+        toast.error(error.response.data.detail || "Registration failed");
       } else {
-        alert("Registration failed");
+        toast.error("Registration failed");
       }
     }
   };

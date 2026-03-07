@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useState } from "react";
 import API from "../api/api";
 import Navbar from "../components/Navbar";
@@ -8,7 +9,7 @@ function Upload({ dark, setDark }) {
 
   const handleUpload = async () => {
     if (!file) {
-      alert("Please select a PDF file.");
+      toast.error("Please select a PDF file.");
       return;
     }
 
@@ -26,7 +27,7 @@ function Upload({ dark, setDark }) {
       window.location.href = "/dashboard";
     } catch (err) {
       console.error("Upload error:", err);
-      alert("Upload failed. Try again.");
+      toast.error("Upload failed. Try again.");
     } finally {
       setLoading(false);
     }
