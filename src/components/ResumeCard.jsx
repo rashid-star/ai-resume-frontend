@@ -44,11 +44,21 @@ function ResumeCard({ resume }) {
         </div>
 
         {/* Score Section */}
-        <div className="flex flex-col items-end text-right">
+        <div className="flex flex-col items-end text-right w-32">
           <div className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white px-4 py-2 rounded-xl font-bold text-lg shadow-md">
             {resume.resume_score || resume.score || 0}
           </div>
+
           <p className="text-xs text-gray-400 mt-1">Resume Score</p>
+
+          <div className="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2 mt-2">
+            <div
+              className="bg-green-500 h-2 rounded-full"
+              style={{
+                width: `${resume.resume_score || resume.score || 0}%`,
+              }}
+            ></div>
+          </div>
         </div>
       </div>
 
@@ -74,7 +84,20 @@ function ResumeCard({ resume }) {
             <h4 className="font-semibold text-gray-800 dark:text-white mb-2">
               Strengths
             </h4>
-            <p>{resume.strengths || "No strengths listed."}</p>
+            {resume.strengths ? (
+              <div className="flex flex-wrap gap-2">
+                {resume.strengths.split(",").map((skill, i) => (
+                  <span
+                    key={i}
+                    className="bg-blue-500/20 text-blue-300 px-2 py-1 rounded-md text-xs"
+                  >
+                    {skill.trim()}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p>No strengths listed.</p>
+            )}{" "}
           </div>
 
           {/* Missing Skills */}
@@ -82,7 +105,20 @@ function ResumeCard({ resume }) {
             <h4 className="font-semibold text-gray-800 dark:text-white mb-2">
               Missing Skills
             </h4>
-            <p>{resume.missing_skills || "No missing skills listed."}</p>
+            {resume.missing_skills ? (
+              <div className="flex flex-wrap gap-2">
+                {resume.missing_skills.split(",").map((skill, i) => (
+                  <span
+                    key={i}
+                    className="bg-red-500/20 text-red-300 px-2 py-1 rounded-md text-xs"
+                  >
+                    {skill.trim()}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p>No missing skills listed.</p>
+            )}{" "}
           </div>
 
           {/* Improvements */}
@@ -90,7 +126,20 @@ function ResumeCard({ resume }) {
             <h4 className="font-semibold text-gray-800 dark:text-white mb-2">
               Improvements
             </h4>
-            <p>{resume.improvements || "No improvements listed."}</p>
+            {resume.improvements ? (
+              <div className="flex flex-wrap gap-2">
+                {resume.improvements.split(",").map((item, i) => (
+                  <span
+                    key={i}
+                    className="bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded-md text-xs"
+                  >
+                    {item.trim()}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p>No improvements listed.</p>
+            )}{" "}
           </div>
 
           {/* Extra Info */}
@@ -99,7 +148,7 @@ function ResumeCard({ resume }) {
               <span className="font-medium text-gray-600 dark:text-gray-300">
                 Domain:
               </span>{" "}
-              {resume.domain || "N/A"}
+              {resume.domain || "General"}
             </span>
 
             <span>
