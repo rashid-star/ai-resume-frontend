@@ -20,8 +20,11 @@ function Register() {
       alert("Registration successful");
       navigate("/");
     } catch (error) {
-      alert("Registration failed");
-      console.error(error);
+      if (error.response && error.response.data) {
+        alert(error.response.data.detail || "Registration failed");
+      } else {
+        alert("Registration failed");
+      }
     }
   };
 

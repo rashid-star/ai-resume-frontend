@@ -18,7 +18,11 @@ function Login() {
       alert("Login successful!");
       navigate("/dashboard");
     } catch (error) {
-      alert("Login failed");
+      if (error.response && error.response.data) {
+        alert(error.response.data.error || "Login failed");
+      } else {
+        alert("Login failed");
+      }
     }
   };
 
