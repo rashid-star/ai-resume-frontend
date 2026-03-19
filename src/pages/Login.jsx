@@ -34,6 +34,8 @@ function Login() {
 
         <input
           style={styles.input}
+          name="email" // ✅ ADD THIS
+          type="email" // ✅ ADD THIS (important)
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -41,13 +43,18 @@ function Login() {
 
         <input
           style={styles.input}
+          name="password" // ✅ ADD THIS
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button style={styles.button} onClick={handleLogin}>
+        <button
+          id="login-btn" // ✅ ADD THIS
+          style={styles.button}
+          onClick={handleLogin}
+        >
           Login
         </button>
         <p className="text-sm text-center mt-4 text-gray-500">
