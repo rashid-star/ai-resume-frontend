@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Upload from "./pages/Upload";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [dark, setDark] = useState(localStorage.getItem("theme") === "dark");
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <Router>
+      <Toaster position="top-center" />
       <Routes>
         <Route path="/" element={<Login setDark={setDark} dark={dark} />} />
         <Route path="/register" element={<Register />} />
