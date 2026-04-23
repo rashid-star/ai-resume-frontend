@@ -20,7 +20,7 @@ function Login() {
       navigate("/dashboard");
     } catch (error) {
       if (error.response && error.response.data) {
-        toast.error(error.response.data.error || "Login failed");
+        toast.error(error.response.data.detail || "Login failed");
       } else {
         toast.error("Login failed");
       }
