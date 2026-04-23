@@ -10,22 +10,38 @@ function Register() {
 
   const navigate = useNavigate();
 
+  const getErrorMessage = (error) => {
+    const detail = error?.response?.data?.detail;
+
+    if (typeof detail === "string" && detail.trim()) return detail;
+
+    if (Array.isArray(detail) && detail.length > 0) {
+      const first = detail[0];
+      if (typeof first === "string" && first.trim()) return first;
+      if (first?.msg) return first.msg;
+    }
+
+    return "Registration failed";
+  };
+
   const handleRegister = async () => {
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      toast.error("Please fill in name, email, and password.");
+      return;
+    }
+
     try {
       await API.post("/register", {
-        name,
-        email,
-        password,
+        name: name.trim(),
+        username: name.trim(),
+        email: email.trim().toLowerCase(),
+        password: password.trim(),
       });
 
       toast.success("Registration successful");
       navigate("/");
     } catch (error) {
-      if (error.response && error.response.data) {
-        toast.error(error.response.data.detail || "Registration failed");
-      } else {
-        toast.error("Registration failed");
-      }
+      toast.error(getErrorMessage(error));
     }
   };
 

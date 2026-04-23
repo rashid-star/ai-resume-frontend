@@ -8,22 +8,38 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const getErrorMessage = (error) => {
+    const detail = error?.response?.data?.detail;
+
+    if (typeof detail === "string" && detail.trim()) return detail;
+
+    if (Array.isArray(detail) && detail.length > 0) {
+      const first = detail[0];
+      if (typeof first === "string" && first.trim()) return first;
+      if (first?.msg) return first.msg;
+    }
+
+    return "Login failed";
+  };
+
   const handleLogin = async () => {
+    if (!email.trim() || !password.trim()) {
+      toast.error("Please enter email and password.");
+      return;
+    }
+
     try {
       const res = await API.post("/login", {
-        email,
-        password,
+        email: email.trim().toLowerCase(),
+        username: email.trim().toLowerCase(),
+        password: password.trim(),
       });
 
       localStorage.setItem("token", res.data.access_token);
       toast.success("Login successful!");
       navigate("/dashboard");
     } catch (error) {
-      if (error.response && error.response.data) {
-        toast.error(error.response.data.detail || "Login failed");
-      } else {
-        toast.error("Login failed");
-      }
+      toast.error(getErrorMessage(error));
     }
   };
 
